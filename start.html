@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Start</title>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="practice, html, css, js, web dev">
-    <meta name="description" content="Practicing web development">
+<base>
+<title>Start</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="practice, html, css, js, web dev">
+<meta name="description" content="Practicing web development">
 
-    <!-- auto refreshing the page after given amount of seconds -->
-    <!-- <meta http-equiv="refresh" content="5"> -->
+<!-- auto refreshing the page after given amount of seconds -->
+<!-- <meta http-equiv="refresh" content="5"> -->
 
-    <!-- redirecting after given amount of seconds -->
-    <!-- <meta http-equiv = "refresh" content = "5; url = http://www.google.com" /> -->
+<!-- redirecting after given amount of seconds -->
+<!-- <meta http-equiv = "refresh" content = "5; url = http://www.google.com" /> -->
 
-    <meta name="author" content="Janko Arandjelovic" />
+<meta name="author" content="Janko Arandjelovic" />
+
+<!-- postavljanje osnovne putanje za relativno adresiranje -->
+<!-- <base href="neki url"> -->
 </head>
 
-<body>
+<body link="#223323" vlink="#ff00ff" alink="#556690">
     <center>
         <h1 class="pozdrav">hello <br />janko</h1>
     </center>
@@ -31,15 +34,19 @@
             odredjenim
     </pre>
 
-    <img src="images/jankoslika.jpg" alt="slika janka" border="1" style="max-width: 10%;max-height: 10%;"> <br>
+    <a href="#Objasnjenja">
+        <img src="images/jankoslika.jpg" alt="slika janka" border="1" style="max-width: 10%;max-height: 10%;">
+    </a> <br>
     moja slika <br>
 
-    <table border="1" cellpadding="5" cellspacing="0" bgcolor="cyan" width = "100%">
+    <a href="http://google.com" target="_blank">Go to Google</a>
+
+    <table border="1" cellpadding="5" cellspacing="0" bgcolor="cyan" width="100%">
         <caption>Naslov tabele</caption>
         <tr>
             <th>Column 1</th>
             <th>Column 2</th>
-         </tr>
+        </tr>
         <tr>
             <td>Row 1, Column 1</td>
             <td>Row 1, Column 2</td>
@@ -60,13 +67,35 @@
             <li>title - prikaz teksta kada se hover-uje preko komponente</li>
             <li>class - povezuje element sa klasom za stilove u CSS, moze i lista klasa odvojenih razmakom</li>
             <li>style - definise CSS stilove posebno za jedan element</li>
+            <li>name - imenuje komponentu kako bi se adresirala u nekom linku (zastarelo - ne koristiti, koristiti id
+                ili title umesto toga)</li>
         </ul>
         Tagovi za grupisanje: <br>
         <ul type="circle">
             <li>div - za grupisanje vise elemenata</li>
             <li>span - za grupisanje vise inline elemenata (npr. da se vise reci u recenici formatira isto)</li>
         </ul>
-
+        Target atribut za linkove: <br>
+        <dl>
+            <dt><b>_blank</b></dt>
+            <dd>Otvara link u novom tabu</dd>
+            <dt><b>_self</b></dt>
+            <dd>Otvara link u istom tabu</dd>
+            <dt><b>_parent</b></dt>
+            <dd>Otvara link u parent frame-u</dd>
+            <dt><b>_top</b></dt>
+            <dd>Otvara link u top-level contekstu</dd>
+            <dt><b>customName</b></dt>
+            <dd>Otvara link u navedenom frame-u</dd>
+        </dl>
+        Postavljanje boje linkova - atributi body tag-a <br>
+        <ul>
+            <li>link - boja neposecenog linka</li>
+            <li>vlink - boja posecenog linka</li>
+            <li>alink - boja aktivnog linka (kada se pritisne)</li>
+        </ul>
+        Linkovi za download - samo referenciraju dokument (pdf, zip...) <br>
+        <a href="IS_DZ1_2023.pdf">otvori pdf</a> <br>
     </div>
 
 </body>
