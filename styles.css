@@ -1,0 +1,53 @@
+/*selecting by tag type*/
+dt {
+    color: blue;
+}
+
+/* selecting by class */
+.pozdrav {
+    color: purple;
+}
+
+/* selecting by id */
+#para1 {
+    color: gold;
+}
+
+/* descendant selectors */
+#Objasnjenja h1 {
+    /* all h1 tags within Objasnjenja id*/
+    color: chocolate;
+}
+
+ul li,
+dl dd,
+dl dt {
+    font-size: 24px;
+}
+
+/* child selectors (only directly nested children of a tag) */
+body>p {
+    font-size: 20px;
+
+}
+
+/* atribute selectors */
+input[type="text"] {
+    color: #d56767;
+}
+
+#Objasnjenja {
+    border: 2px solid;
+    padding: 5px;
+}
+
+/* pseudo klase */
+a:hover {
+    background-color: peachpuff;
+    color: green;
+    font-size: 20px;
+}
+
+body>*:hover {
+    border: 3px solid red;
+}
