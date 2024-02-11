@@ -7,6 +7,9 @@
 <meta name="keywords" content="practice, html, css, js, web dev">
 <meta name="description" content="Practicing web development">
 
+<!-- defult scripting language -->
+<meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+
 <!-- auto refreshing the page after given amount of seconds -->
 <!-- <meta http-equiv="refresh" content="5"> -->
 
@@ -17,6 +20,12 @@
 
 <!-- postavljanje osnovne putanje za relativno adresiranje -->
 <!-- <base href="neki url"> -->
+
+<script type = "text/JavaScript">
+    function EventHandler() {
+       alert("I'm event handler!!");
+    }
+ </script>
 </head>
 
 <body link="#223323" vlink="#ff00ff" alink="#556690">
@@ -40,6 +49,9 @@
     moja slika <br>
 
     <a href="http://google.com" target="_blank">Go to Google</a>
+    <br>
+    <!-- <p onmouseover = "EventHandler();" style="background-color: yellowgreen;">Bring your mouse here to see an alert</p> -->
+    <br>
 
     <table border="1" cellpadding="5" cellspacing="0" bgcolor="cyan" width="100%">
         <caption>Naslov tabele</caption>
@@ -57,6 +69,50 @@
             <td>Row 2, Column 2</td>
         </tr>
     </table>
+
+    <!--formulari
+    <form action = "Script URL" method = "GET|POST">
+        form elements like input, textarea etc.
+    </form>
+    -->
+    <br>
+    <h2>Forme</h2>
+    <form action="#">
+        Single line input: <input type="text" name="singleLineInput" value="" size="20" maxlength="30">
+        <br>
+        Password: <input type="password" name="pwd">
+        <br>
+        Multi-line input: <textarea name="multiline" id="multiline" cols="30" rows="5"></textarea>
+        <br>
+        Checkbox:
+        <input type="checkbox" name="cb1" value="option1" checked> Option 1
+        <input type="checkbox" name="cb2" value="option2" disabled> Option 2
+        <input type="checkbox" name="cb3" value="option3" id="opt3"> Option 3
+        <br>
+        Radio buttons:
+        <input type="radio" name="subject" value="maths"> Maths
+        <input type="radio" name="subject" value="physics"> Physics
+        <br>
+        Select box:
+        <select name="dropdown" size="1">
+            <option value="opt1">Opcija 1</option>
+            <option value="opt2">Opcija 2</option>
+            <option value="opt3">Opcija 3</option>
+        </select>
+        <br>
+        File upload:
+        <input type="file" name="fileupload" accept=".zip">
+        <br>
+        Buttons:
+        <input type="submit" name="submit" value="Submit" />
+        <input type="reset" name="reset" value="Reset" />
+        <input type="button" name="ok" value="OK" />
+        <input type="image" name="imagebutton" src="images/bg1.jpg" />
+        <br>
+        Hidden controls:
+        <input type = "hidden" name = "pagename" value = "10" />
+        <br>
+    </form>
 
     <hr>
     <div id="Objasnjenja">
@@ -96,6 +152,22 @@
         </ul>
         Linkovi za download - samo referenciraju dokument (pdf, zip...) <br>
         <a href="IS_DZ1_2023.pdf">otvori pdf</a> <br>
+
+        Atributi za forme: <br>
+        <ul>
+            <li>action - skripta/link na koji se salju parametri forme</li>
+            <li>method - get ili post</li>
+            <li>target - u kom prozoru se otvara rezultat izvrsenja skripte (_blank, _self ...)</li>
+            <li>
+                enctype - nacin enkodovanja parametara
+                <dl style="margin-top: 0%;">
+                    <dt><b>application/x-www-form-urlencoded</b></dt>
+                    <dd>enkodovanje parametara u url, za tekstualne parametre</dd>
+                    <dt><b>mutlipart/form-data</b></dt>
+                    <dd>enkodovanje binarnih parametara (slike, dokumenta...)</dd>
+                </dl>
+            </li>
+        </ul>
     </div>
 
 </body>
