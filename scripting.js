@@ -102,3 +102,57 @@ function PersonObject(name, age) {
         this.city = city;
     };
 }
+
+function println(text) {
+    document.write(text + "<br>");
+}
+
+function testStringMethods() {
+    var text = "ja sam janko";
+    println(text);
+    println(text.length);
+    println(text.charAt(0));
+    println(text.charCodeAt(0));
+    println(text.concat(" i jos jedan string"));
+
+    //vraca indeks gde pocinje trazeni podstring, -1 ako ne postoji podstring
+    println(text.indexOf("janko"));
+    println(text.indexOf("jaja"));
+
+    // komparacija stringova leksikografski, vraca -1 ako je pozivalac ranije, 0 ako su isti, 1 ako je pozivalac kasnije
+    println(text.localeCompare("aja"));
+    println(text.localeCompare("za"));
+    println(text.localeCompare("ja sam janko"));
+
+    // rad sa regex izrazima, postoje i match i search
+    println(text.replace(" ", "*"));
+    println(text.replaceAll(" ", "*"));
+
+    //slice kao u python-u
+    println(text.slice(0, 5));
+    println(text.slice(7, -1));
+
+    // vraca niz stringova
+    println(text.split(" "));
+
+    // zadaje se pocetni indeks i broj karaktera
+    println(text.substr(3, 3));
+
+    // zadaje se pocetni indeks inkluzivno i krajnji ekskluzivno
+    println(text.substring(3, 9));
+
+    println(text.toLocaleLowerCase());
+    println(text.toLocaleUpperCase());
+}
+
+function stringHTMLWrappers(){
+    text = "ja sam janko";
+    println(text.anchor('anchor_name'));
+    //alert(text.anchor('anchor_name'));
+    println(text.big());
+    println(text.bold());
+    println(text.fontcolor("red"));
+    println(text.fontsize(20));
+    println(text.italics());
+    println(text.link("start.html"));
+}

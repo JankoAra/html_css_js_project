@@ -52,8 +52,7 @@
                 document.write(key + "<br>");
                 document.write(element + "<br>");
             }
-        }
-        
+        };
         for (const key in person) {
             if (person.hasOwnProperty(key) && typeof person[key] !== 'function') {
                 const element = person[key];
@@ -61,6 +60,16 @@
                 document.write(element + "<br>");
             }
         }
+    </script>
+    <hr>
+    String propreties:
+    <br>
+    <script>
+        testStringMethods();
+    </script>
+    <hr>
+    <script>
+        stringHTMLWrappers();
     </script>
 
 </body>
