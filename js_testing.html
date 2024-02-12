@@ -33,7 +33,35 @@
     <button onclick="dialogBox('alert')">Alert button</button>
     <button onclick="dialogBox('confirmation')">Confirmation button</button>
     <button onclick="dialogBox('prompt')">Prompt button</button>
-    
+    <button onclick="window.print()">Print button</button>
+    <br>
+
+    <script>
+        var person = new PersonObject('janko', 21);
+        document.write(person.name + "<br>");
+        document.write(person.age + "<br>");
+        document.write(person.city + "<br>");
+        person.birthday();
+        document.write("Happy birthday<br>");
+        document.write(person.age + "<br>");
+        person.setCity('bgd');
+        document.write(person.city + "<br>");
+        for (const key in person) {
+            if (person.hasOwnProperty(key)) {
+                const element = person[key];
+                document.write(key + "<br>");
+                document.write(element + "<br>");
+            }
+        }
+        
+        for (const key in person) {
+            if (person.hasOwnProperty(key) && typeof person[key] !== 'function') {
+                const element = person[key];
+                document.write(key + "<br>");
+                document.write(element + "<br>");
+            }
+        }
+    </script>
 
 </body>
 

@@ -75,9 +75,30 @@ function dialogBox(type) {
             // prvi parametar je labela, drugi je pocetna vrednost polja
             // vraca vrednost ako se klikne OK, vraca null ako se klikne Cancel
             retVal = prompt("Enter your name : ", "your name here");
-               document.write("You have entered : " + retVal);
+            document.write("You have entered : " + retVal);
             break;
         default:
             document.write("dijalog ne postoji");
     }
+}
+
+// void evaluates the expression inside it, but doesn't return the value
+// void(expression)
+
+
+// constructor function
+function PersonObject(name, age) {
+    // atributes
+    this.name = name;
+    this.age = age;
+
+    // methods
+    this.birthday = function () {
+        this.age++;
+    };
+
+    this.setCity = function (city) {
+        // can declare new atributes inside methods
+        this.city = city;
+    };
 }
