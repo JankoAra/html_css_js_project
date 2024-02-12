@@ -145,7 +145,7 @@ function testStringMethods() {
     println(text.toLocaleUpperCase());
 }
 
-function stringHTMLWrappers(){
+function stringHTMLWrappers() {
     text = "ja sam janko";
     println(text.anchor('anchor_name'));
     //alert(text.anchor('anchor_name'));
@@ -155,4 +155,24 @@ function stringHTMLWrappers(){
     println(text.fontsize(20));
     println(text.italics());
     println(text.link("start.html"));
+}
+
+function getUsernamesFromServer() {
+    fetch('http://127.0.0.1:5000/get_users')
+        .then(res => res.json())
+        .then(res => {
+            var body = document.getElementsByTagName("body")[0];
+            console.log(body);
+            var newDiv = document.createElement('div');
+            var ulElem = document.createElement("ul");
+            newDiv.id = 'usernames';
+            res.forEach(element => {
+                var newElem = document.createElement('li');
+                newElem.textContent = element["username"];
+                ulElem.appendChild(newElem);
+            });
+            newDiv.appendChild(ulElem);
+            body.appendChild(newDiv);
+        })
+        .catch(err => console.log(err));
 }
