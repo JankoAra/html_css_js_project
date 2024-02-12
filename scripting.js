@@ -25,7 +25,7 @@ function setUsernameCookie() {
     }
 }
 
-function deleteCookie(name){
+function deleteCookie(name) {
     setCookie(name, "bla", -1);
 }
 
@@ -38,5 +38,46 @@ function readCookies() {
         name = cookiearray[i].split('=')[0];
         value = cookiearray[i].split('=')[1];
         document.write("Key is : " + name + " and Value is : " + value + "<br>");
+    }
+}
+
+function redirect(url) {
+    window.location = url;
+}
+
+function redirectTimeout(url, seconds) {
+    document.write("You will be redirected in " + seconds + " sec.<br>");
+    document.write(`You will be redirected in ${seconds} sec.`);
+    setTimeout(() => { redirect(url); }, seconds * 1000);
+}
+
+function pageReload() {
+    location.reload(true);
+}
+
+function dialogBox(type) {
+    var retVal;
+    switch (type) {
+        case "alert":
+            // ima samo dugme OK
+            alert("This is a warning message!");
+            break;
+        case "confirmation":
+            // vraca true ako se klikne OK, false ako se klikne Cancel
+            retVal = confirm("Do you want to continue ?");
+            if (retVal == true) {
+                document.write("User wants to continue!");
+            } else {
+                document.write("User does not want to continue!");
+            }
+            break;
+        case "prompt":
+            // prvi parametar je labela, drugi je pocetna vrednost polja
+            // vraca vrednost ako se klikne OK, vraca null ako se klikne Cancel
+            retVal = prompt("Enter your name : ", "your name here");
+               document.write("You have entered : " + retVal);
+            break;
+        default:
+            document.write("dijalog ne postoji");
     }
 }
