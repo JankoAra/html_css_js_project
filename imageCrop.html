@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .image-container {
+      width: 500px; /* Adjust the width and height as needed */
+      height: 700px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .movable-image {
+      width: 100%;
+      height: 100%;
+      object-fit: none;
+      position: relative;
+      object-position: 0 0;
+      cursor: grab; /* Set cursor style to indicate it's draggable */
+    }
+  </style>
+</head>
+<body>
+
+<div class="image-container" id="imageContainer">
+  <img src="images/jankoslika.jpg" alt="Your Image" class="movable-image" id="movableImage">
+</div>
+
+<script>
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  const movableImage = document.getElementById('movableImage');
+  const imageContainer = document.getElementById('imageContainer');
+
+  movableImage.addEventListener('mousedown', startDragging);
+  document.addEventListener('mousemove', drag);
+  document.addEventListener('mouseup', stopDragging);
+
+  function startDragging(e) {
+    e.preventDefault();
+    console.log("start dragging");
+    isDragging = true;
+    offsetX = e.clientX - movableImage.getBoundingClientRect().left;
+    offsetY = e.clientY - movableImage.getBoundingClientRect().top;
+    console.log(offsetX, offsetY);
+    movableImage.style.cursor = 'grabbing'; /* Set cursor style during dragging */
+  }
+
+  function drag(e) {
+    e.preventDefault();
+    if (!isDragging) return;
+    console.log("dragging");
+    //console.log(e.clientX, e.clientY);
+
+    // pomeraj
+    const x = e.clientX - offsetX;
+    const y = e.clientY - offsetY;
+    console.log(x,y);
+
+    // Ensure the image stays within the container
+    const maxX = imageContainer.clientWidth - movableImage.clientWidth;
+    const maxY = imageContainer.clientHeight - movableImage.clientHeight;
+    console.log("image container width, height: ",imageContainer.clientWidth, imageContainer.clientHeight);
+    console.log("movableImage width, height: ",movableImage.clientWidth, movableImage.clientHeight);
+    //console.log(maxX, maxY);
+
+    let newX = Math.min(Math.max(0, x), maxX);
+    let newY = Math.min(Math.max(0, y), maxY);
+    console.log(movableImage.style.objectPosition);
+    //newX = movableImage.style.left
+
+    movableImage.style.left = `${x}px`;
+    movableImage.style.top = `${y}px`;
+  }
+
+  function stopDragging(e) {
+    e.preventDefault();
+    console.log("end dragging");
+    isDragging = false;
+    movableImage.style.cursor = 'grab';
+  }
+</script>
+
+</body>
+</html>

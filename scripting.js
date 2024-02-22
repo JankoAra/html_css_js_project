@@ -157,8 +157,9 @@ function stringHTMLWrappers() {
     println(text.link("start.html"));
 }
 
+// fetch API for communication with the server
 function getUsernamesFromServer() {
-    fetch('http://127.0.0.1:5000/get_users')
+    fetch('http://pitica.local/get_users')
         .then(res => res.json())
         .then(res => {
             var body = document.getElementsByTagName("body")[0];
@@ -173,6 +174,11 @@ function getUsernamesFromServer() {
             });
             newDiv.appendChild(ulElem);
             body.appendChild(newDiv);
+            var btnToDelete = document.getElementById("fetchUsernames");
+            if (btnToDelete) {
+                btnToDelete.remove();
+            }
+            //console.log(document);
         })
         .catch(err => console.log(err));
 }

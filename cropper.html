@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.min.css">
+    <style>
+        .image-container {
+            width: 300px;
+            /* Adjust the width and height as needed */
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #croppedImage {
+            width: 400px;
+            /* Adjust the width as needed */
+            height: auto;
+            display: none;
+            /* Initially hide the cropped image */
+        }
+
+        #downloadButton {
+            display: none;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <input type="file" accept="image/*" id="fileInput">
+    </div>
+
+    <div class="image-container">
+        <img src="" alt="Your Image" id="cropperImage">
+    </div>
+
+    <button id="cropButton" disabled>Crop and Display</button>
+
+    <div>
+        <p>Original Image:</p>
+        <img src="" alt="Your Image" id="originalImage" width="400" height="300"
+            style="object-fit: contain;">
+    </div>
+
+    <div>
+        <p>Cropped Image:</p>
+        <img src="" alt="Cropped Image" id="croppedImage">
+        <a href="#" id="downloadButton" disabled>Download Cropped Image</a>
+    </div>
+
+    <script src="https://unpkg.com/cropperjs"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileInput = document.getElementById('fileInput');
+            const image = document.getElementById('cropperImage');
+            const originalImage = document.getElementById('originalImage');
+            const croppedImage = document.getElementById('croppedImage');
+            const cropButton = document.getElementById('cropButton');
+            const downloadButton = document.getElementById('downloadButton');
+            let cropper;
+
+            fileInput.addEventListener('change', function (event) {
+                const file = event.target.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        image.src = e.target.result;
+                        originalImage.src = e.target.result;
+                        cropButton.removeAttribute('disabled');
+                        downloadButton.setAttribute('disabled', 'disabled');
+                        if (cropper) {
+                            cropper.destroy();
+                        }
+
+                        // Initialize Cropper on image
+                        cropper = new Cropper(image, {
+                            aspectRatio: 1, // Set your desired aspect ratio
+                            dragMode: 'move',   // Enable dragging
+                            viewMode: 2,        // Set to 2 for responsive display
+                            // Add any other Cropper.js options you need
+                        });
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            cropButton.addEventListener('click', function () {
+                // Get the cropped data as a Blob
+                cropper.getCroppedCanvas().toBlob(function (blob) {
+                    // Create a Blob URL for the blob
+                    const blobUrl = URL.createObjectURL(blob);
+
+                    // Set the URL to the cropped image
+                    croppedImage.src = blobUrl;
+
+                    // Display the cropped image
+                    croppedImage.style.display = 'block';
+
+                    // Enable the download button and set its href attribute
+                    downloadButton.href = blobUrl;
+                    downloadButton.removeAttribute('disabled');
+                    downloadButton.style.display = 'inline-block';
+
+                    // Set the download attribute to specify the filename
+                    downloadButton.download = 'cropped-image.jpg';
+                }, 'image/jpeg'); // You can change the image type as needed
+            });
+        });
+    </script>
+
+</body>
+
+</html>
